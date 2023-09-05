@@ -6,51 +6,35 @@
 
 <tr>
     <td>
-        <f:variable name="name"
-                    value="{f:if(condition: header, then: header, else: title)}"></f:variable>
-        <be:link.editRecord uid="{recuid}"
-                            table="{tablename}"
-                            title="{f:translate(key: 'widgets.listOfRecords.edit.title', extensionName: 'customDashboardWidgets', arguments: {0: title, 1: recuid})}"
+        <be:link.editRecord uid="{uid}"
+                            table="{table}"
+                            title="{details}"
                             returnUrl="{be:moduleLink(route: 'dashboard')}">
-            <core:iconForRecord table="{tablename}" row="{_all}"/>
-            <strong>{f:if(condition: name, then: name, else: '[{f:translate(key:
+            <core:iconForRecord table="{table}" row="{_all}"/>
+            <strong>{f:if(condition: title, then: '{title -> f:format.raw()}', else: '[{f:translate(key:
                 \'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.no_title\')}]')}</strong>
         </be:link.editRecord>
     </td>
     <td>
-        <f:if condition="{pid} && {page} && {tablename} != 'pages'">
-            <a href="{be:moduleLink(route: 'web_layout', arguments: '{id: pid}')}"
+        <f:if condition="{pageTitle} && {pageId}">
+            <a href="{be:moduleLink(route: 'web_layout', arguments: '{id: pageId}')}"
                target="_blank"
                title="">
                 <core:iconForRecord table="pages" row="{_all}"/>
-                {page}
+                {pageTitle}
             </a>
         </f:if>
     </td>
     <td>
-        <core:iconForRecord table="{tablename}" row="{_all}"/>
-        <f:if condition="{tablename} != 'tt_content' || {CType} == ''">
-            <f:then>
-                {tablename}
-            </f:then>
-            <f:else>
-                <f:if condition="{CType} == 'list'">
-                    <f:then>
-                        {list_type}
-                    </f:then>
-                    <f:else>
-                        {CType}
-                    </f:else>
-                </f:if>
-            </f:else>
-        </f:if>
+        <core:iconForRecord table="{table}" row="{_all}"/>
+        {type}
     </td>
     <td>
-        <f:format.date format="d.m.Y H.i">{tstamp}</f:format.date>
+        <f:format.date format="d.m.Y H:i">{updated}</f:format.date>
     </td>
     <td class="x--recent-updates-widget--user" style="display: flex;gap: 10px;">
-        <backend:avatar backendUser="{userid}" size="20"/>
-        {username}
+        <backend:avatar backendUser="{userId}" size="20"/>
+        {userName}
     </td>
 </tr>
 
