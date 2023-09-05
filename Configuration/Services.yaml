@@ -1,0 +1,30 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Xima\XimaRecentUpdatesWidget\:
+        resource: '../Classes/*'
+
+    Xima\XimaRecentUpdatesWidget\Widgets\Provider\SysLogButtonProvider:
+        arguments:
+            $title: 'LLL:EXT:xima_recent_updates_widget/Resources/Private/Language/locallang.xlf:widgets.recentUpdates.buttonText'
+
+    Xima\XimaRecentUpdatesWidget\Widgets\RecentContent:
+        class: 'Xima\XimaRecentUpdatesWidget\Widgets\RecentUpdates'
+        arguments:
+            $buttonProvider: '@Xima\XimaRecentUpdatesWidget\Widgets\Provider\SysLogButtonProvider'
+            $dataProvider: '@Xima\XimaRecentUpdatesWidget\Widgets\Provider\RecentUpdatesDataProvider'
+            $options:
+                refreshAvailable: true
+        tags:
+            -   name: dashboard.widget
+                identifier: 'recentUpdates'
+                groupNames: 'systemInfo'
+                title: 'LLL:EXT:xima_recent_updates_widget/Resources/Private/Language/locallang.xlf:widgets.recentUpdates.title'
+                description: 'LLL:EXT:xima_recent_updates_widget/Resources/Private/Language/locallang.xlf:widgets.recentUpdates.description'
+                iconIdentifier: 'content-widget-text'
+                height: 'large'
+                width: 'medium'
+

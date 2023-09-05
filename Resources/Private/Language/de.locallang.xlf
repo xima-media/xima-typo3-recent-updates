@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file target-language="de" datatype="plaintext" original="messages" date="2023-08-16UTC12:26:480">
+		<body>
+			<trans-unit id="widgets.recentUpdates.title">
+				<target>Kürzliche Aktualisierungen</target>
+			</trans-unit>
+			<trans-unit id="widgets.recentUpdates.description">
+				<target>Zeigt eine Liste der kürzlich aktualisierten Elemente an.</target>
+			</trans-unit>
+			<trans-unit id="widgets.recentUpdates.empty">
+				<target>Keine Updates</target>
+			</trans-unit>
+			<trans-unit id="widgets.recentUpdates.buttonText">
+				<target>Alle Updates im Protokoll anzeigen</target>
+			</trans-unit>
+			<trans-unit id="widgets.recentUpdates.content">
+				<target>Inhalt</target>
+			</trans-unit>
+			<trans-unit id="widgets.recentUpdates.page">
+				<target>Seite</target>
+			</trans-unit>
+			<trans-unit id="widgets.recentUpdates.type">
+				<target>Typ</target>
+			</trans-unit>
+			<trans-unit id="widgets.recentUpdates.updated">
+				<target>Aktualisiert</target>
+			</trans-unit>
+			<trans-unit id="widgets.recentUpdates.user">
+				<target>Nutzer</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
