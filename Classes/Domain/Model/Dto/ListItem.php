@@ -22,7 +22,7 @@ class ListItem
     {
         $item = new static();
         $item->log = $sysLogRow;
-        $item->log['log_data'] = json_decode($item->log['log_data']);
+        $item->log['log_data'] = json_decode($item->log['log_data'], true);
         return $item;
     }
 
@@ -43,7 +43,7 @@ class ListItem
         } else {
             $label = '';
             $CTypeLabels = [];
-            $contentGroups = BackendUtility::getPagesTSconfig($this->log['pid'])['mod.']['wizards.']['newContentElement.']['wizardItems.'] ?? [];
+            $contentGroups = BackendUtility::getPagesTSconfig($this->log['pageId'])['mod.']['wizards.']['newContentElement.']['wizardItems.'] ?? [];
             foreach ($contentGroups as $group) {
                 foreach ($group['elements.'] as $element) {
                     $CTypeLabels[$element['tt_content_defValues.']['CType']] = $element['title'];
