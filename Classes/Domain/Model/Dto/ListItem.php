@@ -23,6 +23,7 @@ class ListItem
         $item = new static();
         $item->log = $sysLogRow;
         $item->log['log_data'] = json_decode($item->log['log_data'], true);
+        $item->log['title'] = $item->log['log_data']['title'] ?? '';
         return $item;
     }
 
