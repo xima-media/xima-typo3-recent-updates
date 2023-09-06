@@ -8,12 +8,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
-use TYPO3\CMS\Dashboard\Widgets\RequestAwareWidgetInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
-class RecentUpdates implements WidgetInterface, RequestAwareWidgetInterface
+class RecentUpdates implements WidgetInterface
 {
     protected ServerRequestInterface $request;
 
@@ -35,7 +34,6 @@ class RecentUpdates implements WidgetInterface, RequestAwareWidgetInterface
         $view->setTemplateRootPaths(['EXT:xima_recent_updates_widget/Resources/Private/Templates/']);
         $view->setPartialRootPaths(['EXT:xima_recent_updates_widget/Resources/Private/Partials/']);
         $view->setTemplatePathAndFilename($template);
-        $view->setRequest($this->request);
 
         $view->assignMultiple([
             'configuration' => $this->configuration,
@@ -49,10 +47,5 @@ class RecentUpdates implements WidgetInterface, RequestAwareWidgetInterface
     public function getOptions(): array
     {
         return $this->options;
-    }
-
-    public function setRequest(ServerRequestInterface $request): void
-    {
-        $this->request = $request;
     }
 }
