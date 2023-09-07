@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Xima\XimaRecentUpdatesWidget\Widgets\Provider;
 
-use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use Xima\XimaRecentUpdatesWidget\Domain\Model\Dto\ListItem;
 
 class RecentUpdatesDataProvider implements ListDataProviderInterface
 {
@@ -17,9 +17,10 @@ class RecentUpdatesDataProvider implements ListDataProviderInterface
      */
     public function getItems(): array
     {
+        $typo3Version = GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion();
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('sys_log');
 
-        $results =  $queryBuilder
+        $results = $queryBuilder
             ->select(
                 'sl.recuid as uid',
                 'sl.tstamp as updated',
@@ -46,65 +47,12 @@ class RecentUpdatesDataProvider implements ListDataProviderInterface
         $items = [];
 
         foreach ($results as $result) {
-            $logData = json_decode($result['log_data'], true);
-            $table = $logData['table'];
-
-            if ($table !== 'tt_content' || $result['cType'] === '') {
-                $type = $table;
-            } elseif ($result['cType'] === 'list') {
-                $type = $result['listType'];
-            } else {
-                $type = $this->getCTypeTranslationString($result['cType'], $result['pageId']);
+            try {
+                $items[] = $typo3Version === 11 ? ListItem::createFromV11Log($result) : ListItem::createFromV12Log($result);
+            } catch (\Exception $e) {
             }
-
-            $items[] = [
-                'uid' => $result['uid'],
-                'title' => $this->truncate($logData['title']),
-                'table' => $logData['table'],
-                'pageId' => $result['pageId'],
-                'pageTitle' => $result['pageTitle'],
-                'type' => $type,
-                'updated' => $result['updated'],
-                'userName' => $result['username'],
-                'userId' => $result['userId'],
-                'details' => str_replace(['{', '}'], '', str_replace(array_keys($logData), $logData, $result['details'])),
-            ];
         }
 
         return $items;
-    }
-
-    protected function getCTypeTranslationString(string $key, int $pid): string
-    {
-        $label = '';
-        $CTypeLabels = [];
-        $contentGroups = BackendUtility::getPagesTSconfig($pid)['mod.']['wizards.']['newContentElement.']['wizardItems.'] ?? [];
-        foreach ($contentGroups as $group) {
-            foreach ($group['elements.'] as $element) {
-                $CTypeLabels[$element['tt_content_defValues.']['CType']] = $element['title'];
-            }
-        }
-        if (isset($CTypeLabels[$key])) {
-            $label = $CTypeLabels[$key];
-        }
-
-        if (str_starts_with($label, 'LLL:')) {
-            $label = LocalizationUtility::translate($label);
-        }
-
-        return $label;
-    }
-
-    protected function truncate(string $string, int $length=50, string $append='&hellip;'): string
-    {
-        $string = trim($string);
-
-        if (strlen($string) > $length) {
-            $string = wordwrap($string, $length);
-            $string = explode("\n", $string, 2);
-            $string = $string[0] . $append;
-        }
-
-        return $string;
     }
 }
