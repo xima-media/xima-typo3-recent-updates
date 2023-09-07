@@ -32,7 +32,7 @@ class ListItem
         return str_replace(['{', '}'], '', str_replace(array_keys($this->log['log_data']), $this->log['log_data'], $this->log['details']));
     }
 
-    public function getType(): string
+    public function getType(): string|null
     {
         $table = $this->log['tablename'];
         $cType = $this->log['cType'];
