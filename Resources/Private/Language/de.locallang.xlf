@@ -1,32 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-	<file target-language="de" datatype="plaintext" original="messages" date="2023-08-16UTC12:26:480">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2023-08-16T12:26:48Z">
 		<body>
 			<trans-unit id="widgets.recentUpdates.title">
+				<source />
 				<target>Kürzliche Aktualisierungen</target>
 			</trans-unit>
 			<trans-unit id="widgets.recentUpdates.description">
+				<source />
 				<target>Zeigt eine Liste der kürzlich aktualisierten Elemente an.</target>
 			</trans-unit>
 			<trans-unit id="widgets.recentUpdates.empty">
+				<source />
 				<target>Keine Updates</target>
 			</trans-unit>
 			<trans-unit id="widgets.recentUpdates.buttonText">
+				<source />
 				<target>Alle Updates im Protokoll anzeigen</target>
 			</trans-unit>
 			<trans-unit id="widgets.recentUpdates.content">
+				<source />
 				<target>Inhalt</target>
 			</trans-unit>
 			<trans-unit id="widgets.recentUpdates.page">
+				<source />
 				<target>Seite</target>
 			</trans-unit>
 			<trans-unit id="widgets.recentUpdates.type">
+				<source />
 				<target>Typ</target>
 			</trans-unit>
 			<trans-unit id="widgets.recentUpdates.updated">
+				<source />
 				<target>Aktualisiert</target>
 			</trans-unit>
 			<trans-unit id="widgets.recentUpdates.user">
+				<source />
 				<target>Nutzer</target>
 			</trans-unit>
 		</body>
