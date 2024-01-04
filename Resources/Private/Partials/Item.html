@@ -6,14 +6,23 @@
 
 <tr>
     <td>
-        <be:link.editRecord uid="{item.log.uid}"
-                            table="{item.log.tablename}"
-                            title="{item.details}"
-                            returnUrl="{be:moduleLink(route: 'dashboard')}">
-            <core:iconForRecord table="{item.log.tablename}" row="{item.log}"/>
-            <strong>{f:if(condition: item.title, then: '{item.title -> f:format.raw()}', else: '[{f:translate(key:
-                \'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.no_title\')}]')}</strong>
-        </be:link.editRecord>
+        <f:if condition="{item.log.uid}">
+            <f:then>
+                <be:link.editRecord uid="{item.log.uid}"
+                                    table="{item.log.tablename}"
+                                    title="{item.details}"
+                                    returnUrl="{be:moduleLink(route: 'dashboard')}">
+                    <core:iconForRecord table="{item.log.tablename}" row="{item.log}"/>
+                    <strong>{f:if(condition: item.title, then: '{item.title -> f:format.raw()}', else: '[{f:translate(key:
+                        \'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.no_title\')}]')}</strong>
+                </be:link.editRecord>
+            </f:then>
+            <f:else>
+                <core:iconForRecord table="{item.log.tablename}" row="{item.log}"/>
+                <strong>{f:if(condition: item.title, then: '{item.title -> f:format.raw()}', else: '[{f:translate(key:
+                    \'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.no_title\')}]')}</strong>
+            </f:else>
+        </f:if>
     </td>
     <td>
         <f:if condition="{item.log.pageTitle} && {item.log.pageId}">
