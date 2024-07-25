@@ -15,7 +15,7 @@ declare(strict_types=1);
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace Xima\XimaTypo3RecentUpdatesWidget\Widgets\Provider;
+namespace Xima\XimaTypo3RecentUpdates\Widgets\Provider;
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;

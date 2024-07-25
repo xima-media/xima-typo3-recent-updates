@@ -4,26 +4,26 @@ services:
         autoconfigure: true
         public: false
 
-    Xima\XimaTypo3RecentUpdatesWidget\:
+    Xima\XimaTypo3RecentUpdates\:
         resource: '../Classes/*'
 
-    Xima\XimaTypo3RecentUpdatesWidget\Widgets\Provider\SysLogButtonProvider:
+    Xima\XimaTypo3RecentUpdates\Widgets\Provider\SysLogButtonProvider:
         arguments:
-            $title: 'LLL:EXT:xima_typo3_recent_updates_widget/Resources/Private/Language/locallang.xlf:widgets.recentUpdates.buttonText'
+            $title: 'LLL:EXT:xima_typo3_recent_updates/Resources/Private/Language/locallang.xlf:widgets.recentUpdates.buttonText'
 
-    Xima\XimaTypo3RecentUpdatesWidget\Widgets\RecentContent:
-        class: 'Xima\XimaTypo3RecentUpdatesWidget\Widgets\RecentUpdates'
+    Xima\XimaTypo3RecentUpdates\Widgets\RecentContent:
+        class: 'Xima\XimaTypo3RecentUpdates\Widgets\RecentUpdates'
         arguments:
-            $buttonProvider: '@Xima\XimaTypo3RecentUpdatesWidget\Widgets\Provider\SysLogButtonProvider'
-            $dataProvider: '@Xima\XimaTypo3RecentUpdatesWidget\Widgets\Provider\RecentUpdatesDataProvider'
+            $buttonProvider: '@Xima\XimaTypo3RecentUpdates\Widgets\Provider\SysLogButtonProvider'
+            $dataProvider: '@Xima\XimaTypo3RecentUpdates\Widgets\Provider\RecentUpdatesDataProvider'
             $options:
                 refreshAvailable: true
         tags:
             -   name: dashboard.widget
                 identifier: 'recentUpdates'
                 groupNames: 'systemInfo'
-                title: 'LLL:EXT:xima_typo3_recent_updates_widget/Resources/Private/Language/locallang.xlf:widgets.recentUpdates.title'
-                description: 'LLL:EXT:xima_typo3_recent_updates_widget/Resources/Private/Language/locallang.xlf:widgets.recentUpdates.description'
+                title: 'LLL:EXT:xima_typo3_recent_updates/Resources/Private/Language/locallang.xlf:widgets.recentUpdates.title'
+                description: 'LLL:EXT:xima_typo3_recent_updates/Resources/Private/Language/locallang.xlf:widgets.recentUpdates.description'
                 iconIdentifier: 'content-widget-text'
                 height: 'large'
                 width: 'medium'

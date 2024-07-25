@@ -2,7 +2,7 @@
 
 ![Extension icon](Resources/Public/Icons/Extension.png)
 
-# TYPO3 extension `xima_typo3_recent_updates_widget`
+# TYPO3 extension `xima_typo3_recent_updates`
 
 [![Supported TYPO3 versions](https://badgen.net/badge/TYPO3/v11%20&%20v12%20&%20v13/orange)]()
 
@@ -12,10 +12,10 @@ This TYPO3 extension provides a dashboard widget to display all recent updates o
 
 # Installation
 
-In a composer-based TYPO3 installation you can install the extension EXT:xima-typo3-recent-updates-widget via composer:
+In a composer-based TYPO3 installation you can install the extension EXT:xima-typo3-recent-updates via composer:
 
 ``` bash
-composer require xima/xima-typo3-recent-updates-widget
+composer require xima/xima-typo3-recent-updates
 ```
 
 # Usage

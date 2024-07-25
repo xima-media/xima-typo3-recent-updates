@@ -1,5 +1,5 @@
 {
-    "name": "xima/xima-typo3-recent-updates-widget",
+    "name": "xima/xima-typo3-recent-updates",
     "description": "A widget for the dashboard to display new and recently updated elements.",
     "type": "typo3-cms-extension",
     "license": [
@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Xima\\XimaTypo3RecentUpdatesWidget\\": "Classes/"
+            "Xima\\XimaTypo3RecentUpdates\\": "Classes/"
         }
     },
     "extra": {
         "typo3/cms": {
-            "extension-key": "xima_typo3_recent_updates_widget"
+            "extension-key": "xima_typo3_recent_updates"
         }
     },
     "config": {

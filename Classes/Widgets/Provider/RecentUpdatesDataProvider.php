@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Xima\XimaTypo3RecentUpdatesWidget\Widgets\Provider;
+namespace Xima\XimaTypo3RecentUpdates\Widgets\Provider;
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
-use Xima\XimaTypo3RecentUpdatesWidget\Domain\Model\Dto\ListItem;
+use Xima\XimaTypo3RecentUpdates\Domain\Model\Dto\ListItem;
 
 class RecentUpdatesDataProvider implements ListDataProviderInterface
 {

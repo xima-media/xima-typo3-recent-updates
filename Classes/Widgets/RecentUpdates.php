@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xima\XimaTypo3RecentUpdatesWidget\Widgets;
+namespace Xima\XimaTypo3RecentUpdates\Widgets;
 
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -26,13 +26,13 @@ class RecentUpdates implements WidgetInterface
 
     public function renderWidgetContent(): string
     {
-        $template = GeneralUtility::getFileAbsFileName('EXT:xima_typo3_recent_updates_widget/Resources/Private/Templates/List.html');
+        $template = GeneralUtility::getFileAbsFileName('EXT:xima_typo3_recent_updates/Resources/Private/Templates/List.html');
 
         // preparing view
         $view = GeneralUtility::makeInstance(StandaloneView::class);
         $view->setFormat('html');
-        $view->setTemplateRootPaths(['EXT:xima_typo3_recent_updates_widget/Resources/Private/Templates/']);
-        $view->setPartialRootPaths(['EXT:xima_typo3_recent_updates_widget/Resources/Private/Partials/']);
+        $view->setTemplateRootPaths(['EXT:xima_typo3_recent_updates/Resources/Private/Templates/']);
+        $view->setPartialRootPaths(['EXT:xima_typo3_recent_updates/Resources/Private/Partials/']);
         $view->setTemplatePathAndFilename($template);
 
         $view->assignMultiple([
