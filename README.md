@@ -1,5 +1,12 @@
-TYPO3 extension `xima-recent-updates-widget`
-============================
+<div align="center">
+
+![Extension icon](Resources/Public/Icons/Extension.png)
+
+# TYPO3 extension `xima_typo3_recent_updates_widget`
+
+[![Supported TYPO3 versions](https://badgen.net/badge/TYPO3/v11%20&%20v12%20&%20v13/orange)]()
+
+</div>
 
 This TYPO3 extension provides a dashboard widget to display all recent updates of the CMS content.
 
