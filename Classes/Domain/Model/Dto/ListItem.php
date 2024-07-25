@@ -1,6 +1,6 @@
 <?php
 
-namespace Xima\XimaRecentUpdatesWidget\Domain\Model\Dto;
+namespace Xima\XimaTypo3RecentUpdatesWidget\Domain\Model\Dto;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
