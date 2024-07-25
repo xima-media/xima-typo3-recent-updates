@@ -39,7 +39,7 @@ class RecentUpdates implements WidgetInterface
             'configuration' => $this->configuration,
             'records' => $this->dataProvider->getItems(),
             'button' => $this->buttonProvider,
-            'options' => $this->options
+            'options' => $this->options,
         ]);
         return $view->render();
     }
