@@ -4,13 +4,18 @@
 
 # TYPO3 extension `xima_typo3_recent_updates`
 
-[![Supported TYPO3 versions](https://badgen.net/badge/TYPO3/v11%20&%20v12%20&%20v13/orange)]()
+[![Latest Stable Version](http://poser.pugx.org/xima/xima-typo3-recent-updates/v)](https://packagist.org/packages/xima/xima-typo3-recent-updates)
+[![Supported TYPO3 versions](https://badgen.net/badge/TYPO3/11%20&%2012%20&%2013/orange)]()
+[![PHP Version Require](http://poser.pugx.org/xima/xima-typo3-recent-updates/require/php)](https://packagist.org/packages/xima/xima-typo3-recent-updates)
+[![Total Downloads](http://poser.pugx.org/xima/xima-typo3-recent-updates/downloads)](https://packagist.org/packages/xima/xima-typo3-recent-updates)
 
 </div>
 
 This TYPO3 extension provides a dashboard widget to display all recent updates of the CMS content.
 
-# Installation
+## Installation
+
+### Composer
 
 In a composer-based TYPO3 installation you can install the extension EXT:xima-typo3-recent-updates via composer:
 
@@ -18,10 +23,18 @@ In a composer-based TYPO3 installation you can install the extension EXT:xima-ty
 composer require xima/xima-typo3-recent-updates
 ```
 
-# Usage
+### TER
+
+[![TER version](https://typo3-badges.dev/badge/xima_typo3_recent_updates/version/shields.svg)](https://extensions.typo3.org/extension/xima_typo3_recent_updates)
+
+Download the zip file from [TYPO3 extension repository (TER)](https://extensions.typo3.org/extension/xima_typo3_recent_updates).
+
+## Usage
 
 1. Install the extension.
 2. Add the widget to your dashboard via the "System Information" tab.
+
    ![Insert widget to the dashboard](Documentation/Images/insert-widget.png "Insert widget to the dashboard")
 3. Display the recent updates within your dashboard.
+
    ![Show widget in the dashboard](Documentation/Images/widget-list.png "Show widget in the dashboard")
