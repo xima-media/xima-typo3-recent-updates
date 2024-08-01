@@ -4,10 +4,9 @@
 
 # TYPO3 extension `xima_typo3_recent_updates`
 
-[![Latest Stable Version](http://poser.pugx.org/xima/xima-typo3-recent-updates/v)](https://packagist.org/packages/xima/xima-typo3-recent-updates)
-[![Supported TYPO3 versions](https://badgen.net/badge/TYPO3/11%20&%2012%20&%2013/orange)]()
-[![PHP Version Require](http://poser.pugx.org/xima/xima-typo3-recent-updates/require/php)](https://packagist.org/packages/xima/xima-typo3-recent-updates)
-[![Total Downloads](http://poser.pugx.org/xima/xima-typo3-recent-updates/downloads)](https://packagist.org/packages/xima/xima-typo3-recent-updates)
+[![Latest Stable Version](https://typo3-badges.dev/badge/xima_typo3_recent_updates/version/shields.svg)](https://packagist.org/packages/xima/xima-typo3-recent-updates)
+[![Supported TYPO3 versions](https://badgen.net/badge/TYPO3/11%20&%2012%20&%2013/orange)](https://extensions.typo3.org/extension/xima_typo3_recent_updates)
+[![Total Downloads](https://typo3-badges.dev/badge/xima_typo3_recent_updates/downloads/shields.svg)](https://extensions.typo3.org/extension/xima_typo3_recent_updates)
 
 </div>
 
@@ -38,3 +37,8 @@ Download the zip file from [TYPO3 extension repository (TER)](https://extensions
 3. Display the recent updates within your dashboard.
 
    ![Show widget in the dashboard](Documentation/Images/widget-list.png "Show widget in the dashboard")
+
+## License
+
+This project is licensed
+under [GNU General Public License 2.0 (or later)](LICENSE.md).
