@@ -54,7 +54,8 @@ final class ListItem
         if (isset($CTypeLabels[$cType])) {
             $label = $CTypeLabels[$cType];
         }
-        return LocalizationUtility::translate($label);
+
+        return str_starts_with($label, 'LLL') ? LocalizationUtility::translate($label) : $label;
     }
 
     public function getTitle(): string
