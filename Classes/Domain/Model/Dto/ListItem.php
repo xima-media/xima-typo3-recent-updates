@@ -47,6 +47,9 @@ final class ListItem
         $CTypeLabels = [];
         $contentGroups = BackendUtility::getPagesTSconfig($this->log['pageId'])['mod.']['wizards.']['newContentElement.']['wizardItems.'] ?? [];
         foreach ($contentGroups as $group) {
+            if (!array_key_exists('elements.', $group)) {
+                continue;
+            }
             foreach ($group['elements.'] as $element) {
                 $CTypeLabels[$element['tt_content_defValues.']['CType']] = $element['title'];
             }
