@@ -38,6 +38,14 @@ Download the zip file from [TYPO3 extension repository (TER)](https://extensions
 
    ![Show widget in the dashboard](Documentation/Images/widget-list.png "Show widget in the dashboard")
 
+## Development
+
+Use the following ddev command to easily install all support TYPO3 versions.
+
+```bash
+ddev install all
+```
+
 ## License
 
 This project is licensed
