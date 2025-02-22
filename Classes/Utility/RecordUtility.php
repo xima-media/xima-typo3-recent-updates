@@ -15,7 +15,7 @@ class RecordUtility
         }
 
         $record = BackendUtility::getRecord($table, $uid);
-        if ($record === false) {
+        if (empty($record)) {
             return '';
         }
 
