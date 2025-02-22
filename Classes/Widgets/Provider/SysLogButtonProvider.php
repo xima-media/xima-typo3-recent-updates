@@ -3,17 +3,17 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
+* This file is part of the TYPO3 CMS project.
+*
+* It is free software; you can redistribute it and/or modify it under
+* the terms of the GNU General Public License, either version 2
+* of the License, or any later version.
+*
+* For the full copyright and license information, please read the
+* LICENSE.txt file that was distributed with this source code.
+*
+* The TYPO3 project - inspiring people to share!
+*/
 
 namespace Xima\XimaTypo3RecentUpdates\Widgets\Provider;
 
@@ -22,10 +22,10 @@ use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ElementAttributesInterface;
 
 /**
- * Provide link for sys log button.
- * Check whether belog is enabled and add link to module.
- * No link is returned if not enabled.
- */
+* Provide link for sys log button.
+* Check whether belog is enabled and add link to module.
+* No link is returned if not enabled.
+*/
 class SysLogButtonProvider implements ButtonProviderInterface, ElementAttributesInterface
 {
     public function __construct(private readonly string $title, private readonly string $target = '')

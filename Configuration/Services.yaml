@@ -27,4 +27,3 @@ services:
                 iconIdentifier: 'content-widget-text'
                 height: 'large'
                 width: 'medium'
-

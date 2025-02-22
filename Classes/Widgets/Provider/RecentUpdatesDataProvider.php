@@ -13,8 +13,8 @@ use Xima\XimaTypo3RecentUpdates\Domain\Model\Dto\ListItem;
 class RecentUpdatesDataProvider implements ListDataProviderInterface
 {
     /**
-     * @throws \Doctrine\DBAL\Exception
-     */
+    * @throws \Doctrine\DBAL\Exception
+    */
     public function getItems(): array
     {
         $typo3Version = GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion();

@@ -1,10 +1,10 @@
 {
 	"name": "xima/xima-typo3-recent-updates",
 	"description": "A widget for the dashboard to display new and recently updated elements.",
-	"type": "typo3-cms-extension",
 	"license": [
 		"GPL-2.0-or-later"
 	],
+	"type": "typo3-cms-extension",
 	"authors": [
 		{
 			"name": "Konrad Michalik",
