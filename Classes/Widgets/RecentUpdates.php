@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Xima\XimaTypo3RecentUpdates\Widgets;
 
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
@@ -40,6 +41,7 @@ class RecentUpdates implements WidgetInterface
             'records' => $this->dataProvider->getItems(),
             'button' => $this->buttonProvider,
             'options' => $this->options,
+            'version' => GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion(),
         ]);
         return $view->render();
     }
