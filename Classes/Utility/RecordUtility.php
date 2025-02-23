@@ -19,6 +19,6 @@ class RecordUtility
             return '';
         }
 
-        return (string)$record[$GLOBALS['TCA'][$table]['ctrl']['label']] ?? '';
+        return isset($record[$GLOBALS['TCA'][$table]['ctrl']['label']]) ? (string)$record[$GLOBALS['TCA'][$table]['ctrl']['label']] : '';
     }
 }
