@@ -24,6 +24,7 @@
 	},
 	"require-dev": {
 		"armin/editorconfig-cli": "^1.0 || ^2.0",
+		"eliashaeussler/version-bumper": "^2.4 || ^3.0",
 		"eliashaeussler/php-cs-fixer-config": "2.3.0",
 		"ergebnis/composer-normalize": "^2.44",
 		"friendsofphp/php-cs-fixer": "^3.52",
@@ -44,6 +45,7 @@
 	},
 	"config": {
 		"allow-plugins": {
+			"eliashaeussler/version-bumper": true,
 			"ergebnis/composer-normalize": true,
 			"helhum/dotenv-connector": true,
 			"php-http/discovery": true,
