@@ -27,12 +27,13 @@
 	},
 	"require-dev": {
 		"armin/editorconfig-cli": "^1.0 || ^2.0",
-		"eliashaeussler/version-bumper": "^2.4 || ^3.0",
 		"eliashaeussler/php-cs-fixer-config": "2.3.0",
+		"eliashaeussler/version-bumper": "^2.4 || ^3.0",
 		"ergebnis/composer-normalize": "^2.44",
 		"friendsofphp/php-cs-fixer": "^3.52",
 		"helhum/typo3-console": "^8.1",
 		"helmich/typo3-typoscript-lint": "^3.2",
+		"move-elevator/composer-translation-validator": "^1.0",
 		"phpstan/phpstan-deprecation-rules": "^1.0 || ^2.0",
 		"phpstan/phpstan-strict-rules": "^1.0 || ^2.0",
 		"roave/security-advisories": "dev-latest",
@@ -55,6 +56,7 @@
 			"eliashaeussler/version-bumper": true,
 			"ergebnis/composer-normalize": true,
 			"helhum/dotenv-connector": true,
+			"move-elevator/composer-translation-validator": true,
 			"php-http/discovery": true,
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
@@ -81,12 +83,14 @@
 		"lint": [
 			"@lint:composer",
 			"@lint:editorconfig",
+			"@lint:language",
 			"@lint:php",
 			"@lint:typoscript",
 			"@lint:yaml"
 		],
 		"lint:composer": "@fix:composer --dry-run",
 		"lint:editorconfig": "ec --git-only",
+		"lint:language": "@composer validate-translations ./Resources/Private/Language",
 		"lint:php": "@fix:php --dry-run",
 		"lint:typoscript": "typoscript-lint --fail-on-warnings",
 		"lint:yaml": "find ./ ! -path './vendor/*' ! -path '*/node_modules/*' ! -path './.Build/*' ! -path './xima_typo3_content_planner/*' \\( -name '*.yaml' -o -name '*.yml' \\) | xargs -r yaml-lint",
