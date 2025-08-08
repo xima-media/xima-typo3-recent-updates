@@ -62,7 +62,7 @@ final class ListItem
         } elseif ($cType === 'list') {
             $label = $this->log['listType'];
         } else {
-            $label = BackendUtility::getLabelFromItemList('tt_content', 'CType', $cType);
+            $label = BackendUtility::getLabelFromItemlist('tt_content', 'CType', $cType);
         }
         return str_starts_with($label, 'LLL') ? LocalizationUtility::translate($label) : $label;
     }
