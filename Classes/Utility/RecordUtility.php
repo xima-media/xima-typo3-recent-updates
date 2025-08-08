@@ -34,7 +34,7 @@ class RecordUtility
         }
 
         $record = BackendUtility::getRecord($table, $uid);
-        if (empty($record)) {
+        if ($record === null || $record === []) {
             return '';
         }
 

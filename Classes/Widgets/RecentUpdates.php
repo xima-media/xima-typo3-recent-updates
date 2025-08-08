@@ -30,7 +30,7 @@ use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
-use TYPO3\CMS\Fluid\View\StandaloneView;
+use Xima\XimaTypo3RecentUpdates\Utility\ViewFactoryHelper;
 
 class RecentUpdates implements WidgetInterface
 {
@@ -45,23 +45,16 @@ class RecentUpdates implements WidgetInterface
 
     public function renderWidgetContent(): string
     {
-        $template = GeneralUtility::getFileAbsFileName('EXT:xima_typo3_recent_updates/Resources/Private/Templates/List.html');
-
-        // preparing view
-        $view = GeneralUtility::makeInstance(StandaloneView::class);
-        $view->setFormat('html');
-        $view->setTemplateRootPaths(['EXT:xima_typo3_recent_updates/Resources/Private/Templates/']);
-        $view->setPartialRootPaths(['EXT:xima_typo3_recent_updates/Resources/Private/Partials/']);
-        $view->setTemplatePathAndFilename($template);
-
-        $view->assignMultiple([
-            'configuration' => $this->configuration,
-            'records' => $this->dataProvider->getItems(),
-            'button' => $this->buttonProvider,
-            'options' => $this->options,
-            'version' => GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion(),
-        ]);
-        return $view->render();
+        return ViewFactoryHelper::renderView(
+            'List.html',
+            [
+                'configuration' => $this->configuration,
+                'records' => $this->dataProvider->getItems(),
+                'button' => $this->buttonProvider,
+                'options' => $this->options,
+                'version' => GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion(),
+            ]
+        );
     }
 
     public function getOptions(): array
