@@ -24,8 +24,12 @@ declare(strict_types=1);
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
 
 return [
-    'recent-updates-widget' => [
+    'recent-updates' => [
         'provider' => SvgIconProvider::class,
-        'source' => 'EXT:xima_typo3_recent_updates/Resources/Public/Icons/recent-updates-widget.svg',
+        'source' => 'EXT:xima_typo3_recent_updates/Resources/Public/Icons/Extension.svg',
+    ],
+    'content-widget-recent-updates' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:xima_typo3_recent_updates/Resources/Public/Icons/content-widget-recent-updates.svg',
     ],
 ];
