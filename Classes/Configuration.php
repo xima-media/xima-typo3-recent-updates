@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the TYPO3 CMS extension "xima_typo3_recent_updates".
  *
@@ -19,21 +21,10 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-$EM_CONF[$_EXTKEY] = [
-    'title' => 'Recent Updates Widget',
-    'description' => 'A widget for the dashboard to display new and recently updated elements.',
-    'category' => 'module',
-    'author' => 'Konrad Michalik',
-    'author_email' => 'konrad.michalik@xima.de',
-    'author_company' => 'XIMA MEDIA GmbH',
-    'state' => 'stable',
-    'version' => '1.0.3',
-    'constraints' => [
-        'depends' => [
-            'php' => '8.1.0-8.4.99',
-            'typo3' => '11.5.0-13.4.99',
-        ],
-        'conflicts' => [],
-        'suggests' => [],
-    ],
-];
+namespace Xima\XimaTypo3RecentUpdates;
+
+class Configuration
+{
+    final public const EXT_KEY = 'xima_typo3_recent_updates';
+    final public const EXT_NAME = 'XimaTypo3RecentUpdates';
+}
