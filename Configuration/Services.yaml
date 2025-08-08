@@ -24,6 +24,6 @@ services:
                 groupNames: 'systemInfo'
                 title: 'LLL:EXT:xima_typo3_recent_updates/Resources/Private/Language/locallang.xlf:widgets.recentUpdates.title'
                 description: 'LLL:EXT:xima_typo3_recent_updates/Resources/Private/Language/locallang.xlf:widgets.recentUpdates.description'
-                iconIdentifier: 'content-widget-text'
+                iconIdentifier: 'content-widget-recent-updates'
                 height: 'large'
                 width: 'medium'
