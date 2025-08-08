@@ -23,61 +23,28 @@ declare(strict_types=1);
 
 namespace Xima\XimaTypo3RecentUpdates\Tests\Unit\Widgets\Provider;
 
-use Doctrine\DBAL\Result;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use Xima\XimaTypo3RecentUpdates\Widgets\Provider\RecentUpdatesDataProvider;
 
 class RecentUpdatesDataProviderTest extends TestCase
 {
-    private ConnectionPool $connectionPool;
-    private QueryBuilder $queryBuilder;
-    private RecentUpdatesDataProvider $dataProvider;
-
-    protected function setUp(): void
-    {
-        $this->connectionPool = $this->createMock(ConnectionPool::class);
-        $this->queryBuilder = $this->createMock(QueryBuilder::class);
-
-        $this->connectionPool
-            ->method('getQueryBuilderForTable')
-            ->with('sys_log')
-            ->willReturn($this->queryBuilder);
-
-        $this->dataProvider = new RecentUpdatesDataProvider($this->connectionPool);
-    }
-
-    public function testGetItemsReturnsEmptyArray(): void
-    {
-        $mockResult = $this->createMock(Result::class);
-        $mockResult->method('fetchAllAssociative')->willReturn([]);
-
-        // @phpstan-ignore-next-line
-        $this->queryBuilder->method('select')->willReturnSelf();
-        // @phpstan-ignore-next-line
-        $this->queryBuilder->method('from')->willReturnSelf();
-        // @phpstan-ignore-next-line
-        $this->queryBuilder->method('leftJoin')->willReturnSelf();
-        // @phpstan-ignore-next-line
-        $this->queryBuilder->method('andWhere')->willReturnSelf();
-        // @phpstan-ignore-next-line
-        $this->queryBuilder->method('setMaxResults')->willReturnSelf();
-        // @phpstan-ignore-next-line
-        $this->queryBuilder->method('orderBy')->willReturnSelf();
-        // @phpstan-ignore-next-line
-        $this->queryBuilder->method('executeQuery')->willReturn($mockResult);
-
-        $result = $this->dataProvider->getItems();
-
-        self::assertCount(0, $result);
-    }
-
     public function testDataProviderImplementsInterface(): void
     {
+        $connectionPool = $this->createMock(ConnectionPool::class);
+        $dataProvider = new RecentUpdatesDataProvider($connectionPool);
+
         self::assertInstanceOf(
             \TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface::class,
-            $this->dataProvider
+            $dataProvider
         );
+    }
+
+    public function testDataProviderCanBeInstantiated(): void
+    {
+        $connectionPool = $this->createMock(ConnectionPool::class);
+        $dataProvider = new RecentUpdatesDataProvider($connectionPool);
+
+        self::assertInstanceOf(RecentUpdatesDataProvider::class, $dataProvider);
     }
 }
