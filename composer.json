@@ -8,12 +8,8 @@
 	"authors": [
 		{
 			"name": "Konrad Michalik",
-			"email": "konrad.michalik@xima.de",
-			"role": "Developer"
-		},
-		{
-			"name": "XIMA MEDIA GmbH",
-			"email": "kontakt@xima.de"
+			"email": "hej@konradmichalik.dev",
+			"role": "Maintainer"
 		}
 	],
 	"require": {
