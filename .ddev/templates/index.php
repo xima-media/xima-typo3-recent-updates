@@ -36,7 +36,7 @@ if (file_exists($composerJsonPath)) {
     <p>Run <code>ddev install all</code> to install all TYPO3 instances below:</p>
     <?php
     foreach ($supportedVersions as $version) {
-        $directoryPath = "/var/www/html/.test/" . $version;
+        $directoryPath = '/var/www/html/.Build/' . $version;
         if (is_dir($directoryPath)) {
             echo "<article><kbd>{$version}</kbd> <a target='_blank' href='https://{$version}.{$extensionKey}.ddev.site/typo3/?u={$typo3AdminUser}&p={$typo3AdminPassword}'>https://{$version}.{$extensionKey}.ddev.site/typo3</a></article>";
         } else {

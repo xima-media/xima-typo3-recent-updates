@@ -65,7 +65,7 @@ function intro_typo3() {
 
 function install_start() {
     local version=$1
-    rm -rf /var/www/html/.test/$version/*
+    rm -rf /var/www/html/.Build/$version/*
     setup_environment $version
     create_symlinks_main_extension
     setup_composer
@@ -73,7 +73,7 @@ function install_start() {
 
 function setup_environment() {
     local version=$1
-    BASE_PATH="/var/www/html/.test/$version"
+    BASE_PATH="/var/www/html/.Build/$version"
     rm -rf "$BASE_PATH"
     mkdir -p "$BASE_PATH/packages/$EXTENSION_KEY"
     chmod 775 -R $BASE_PATH
