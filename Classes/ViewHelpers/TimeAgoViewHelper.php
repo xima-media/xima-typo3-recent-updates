@@ -40,6 +40,7 @@ use Xima\XimaTypo3RecentUpdates\Configuration;
 class TimeAgoViewHelper extends AbstractViewHelper
 {
     protected $escapeOutput = false;
+
     public function __construct(private readonly \TYPO3\CMS\Core\Context\Context $context) {}
 
     public function initializeArguments(): void
@@ -123,11 +124,12 @@ class TimeAgoViewHelper extends AbstractViewHelper
         $singularKey = $baseKey . '.singular';
         $pluralKey = $baseKey . '.plural';
 
-        $template = $count === 1
-            ? LocalizationUtility::translate($singularKey, Configuration::EXT_NAME)
-            : LocalizationUtility::translate($pluralKey, Configuration::EXT_NAME);
+        $template = LocalizationUtility::translate(
+            $count === 1 ? $singularKey : $pluralKey,
+            Configuration::EXT_NAME
+        ) ?? '%d';
 
-        return sprintf($template ?? '', $count);
+        return sprintf($template, $count);
     }
 
     /**
