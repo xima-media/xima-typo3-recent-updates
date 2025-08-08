@@ -38,6 +38,54 @@
 				<source />
 				<target>Nutzer</target>
 			</trans-unit>
+			<trans-unit id="timeago.just_now">
+				<source />
+				<target>gerade eben</target>
+			</trans-unit>
+			<trans-unit id="timeago.future">
+				<source />
+				<target>in der Zukunft</target>
+			</trans-unit>
+			<trans-unit id="timeago.minutes.singular">
+				<source />
+				<target>vor %d Minute</target>
+			</trans-unit>
+			<trans-unit id="timeago.minutes.plural">
+				<source />
+				<target>vor %d Minuten</target>
+			</trans-unit>
+			<trans-unit id="timeago.hours.singular">
+				<source />
+				<target>vor %d Stunde</target>
+			</trans-unit>
+			<trans-unit id="timeago.hours.plural">
+				<source />
+				<target>vor %d Stunden</target>
+			</trans-unit>
+			<trans-unit id="timeago.days.singular">
+				<source />
+				<target>vor %d Tag</target>
+			</trans-unit>
+			<trans-unit id="timeago.days.plural">
+				<source />
+				<target>vor %d Tagen</target>
+			</trans-unit>
+			<trans-unit id="timeago.months.singular">
+				<source />
+				<target>vor %d Monat</target>
+			</trans-unit>
+			<trans-unit id="timeago.months.plural">
+				<source />
+				<target>vor %d Monaten</target>
+			</trans-unit>
+			<trans-unit id="timeago.years.singular">
+				<source />
+				<target>vor %d Jahr</target>
+			</trans-unit>
+			<trans-unit id="timeago.years.plural">
+				<source />
+				<target>vor %d Jahren</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

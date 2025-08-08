@@ -29,6 +29,42 @@
 			<trans-unit id="widgets.recentUpdates.user">
 				<source>User</source>
 			</trans-unit>
+			<trans-unit id="timeago.just_now">
+				<source>just now</source>
+			</trans-unit>
+			<trans-unit id="timeago.future">
+				<source>in the future</source>
+			</trans-unit>
+			<trans-unit id="timeago.minutes.singular">
+				<source>%d minute ago</source>
+			</trans-unit>
+			<trans-unit id="timeago.minutes.plural">
+				<source>%d minutes ago</source>
+			</trans-unit>
+			<trans-unit id="timeago.hours.singular">
+				<source>%d hour ago</source>
+			</trans-unit>
+			<trans-unit id="timeago.hours.plural">
+				<source>%d hours ago</source>
+			</trans-unit>
+			<trans-unit id="timeago.days.singular">
+				<source>%d day ago</source>
+			</trans-unit>
+			<trans-unit id="timeago.days.plural">
+				<source>%d days ago</source>
+			</trans-unit>
+			<trans-unit id="timeago.months.singular">
+				<source>%d month ago</source>
+			</trans-unit>
+			<trans-unit id="timeago.months.plural">
+				<source>%d months ago</source>
+			</trans-unit>
+			<trans-unit id="timeago.years.singular">
+				<source>%d year ago</source>
+			</trans-unit>
+			<trans-unit id="timeago.years.plural">
+				<source>%d years ago</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
