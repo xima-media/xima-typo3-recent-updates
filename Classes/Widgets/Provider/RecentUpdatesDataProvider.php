@@ -31,9 +31,7 @@ use Xima\XimaTypo3RecentUpdates\Domain\Model\Dto\ListItem;
 
 class RecentUpdatesDataProvider implements ListDataProviderInterface
 {
-    public function __construct(private readonly \TYPO3\CMS\Core\Database\ConnectionPool $connectionPool)
-    {
-    }
+    public function __construct(private readonly ConnectionPool $connectionPool) {}
     /**
     * @throws \Doctrine\DBAL\Exception
     */
