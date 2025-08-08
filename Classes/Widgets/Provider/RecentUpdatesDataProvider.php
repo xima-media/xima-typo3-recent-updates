@@ -31,13 +31,16 @@ use Xima\XimaTypo3RecentUpdates\Domain\Model\Dto\ListItem;
 
 class RecentUpdatesDataProvider implements ListDataProviderInterface
 {
+    public function __construct(private readonly \TYPO3\CMS\Core\Database\ConnectionPool $connectionPool)
+    {
+    }
     /**
     * @throws \Doctrine\DBAL\Exception
     */
     public function getItems(): array
     {
         $typo3Version = GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion();
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('sys_log');
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable('sys_log');
 
         $results = $queryBuilder
             ->select(
