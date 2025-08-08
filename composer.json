@@ -65,44 +65,33 @@
 		}
 	},
 	"scripts": {
-		"check": [
-			"@composer:normalize:check",
-			"@editorconfig:lint:check",
-			"@php:lint:check",
-			"@yaml:lint:check",
-			"@xml:lint:check",
-			"@typoscript:lint:check",
-			"@php:stan:check",
-			"@php:rector:check",
-			"@php:fixer:check"
-		],
-		"composer:normalize": "@composer normalize --no-check-lock",
-		"composer:normalize:check": "@composer normalize --no-check-lock --dry-run",
-		"editorconfig:lint": "ec --strict --fix --git-only -n",
-		"editorconfig:lint:check": "ec --strict --git-only -n",
 		"fix": [
-			"@composer:normalize",
-			"@editorconfig:lint",
-			"@php:fixer",
-			"@yaml:lint",
-			"@xml:lint",
-			"@typoscript:lint",
-			"@php:stan",
-			"@php:rector"
+			"@fix:composer",
+			"@fix:editorconfig",
+			"@fix:php"
 		],
-		"php:fixer": "php vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix",
-		"php:fixer:check": "php vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix --dry-run --format=checkstyle > php-cs-fixer.xml || true",
-		"php:lint": "find *.php . -name '*.php' ! -path './vendor/*'  ! -path './var/*' ! -path '*node_modules/*'  ! -path './.test/*' ! -path './public/*' -print0 | xargs -0 -n 1 -P 4 php -l",
-		"php:lint:check": "find *.php . -name '*.php' ! -path './vendor/*'  ! -path './var/*' ! -path '*node_modules/*'  ! -path './.test/*' ! -path './public/*' -print0 | xargs -0 -n 1 -P 4 php -l",
-		"php:rector": "rector",
-		"php:rector:check": "rector --dry-run",
-		"php:stan": "php vendor/bin/phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline --memory-limit=2G",
-		"php:stan:check": "phpstan --no-progress --error-format=checkstyle > phpstan.xml || true",
-		"typoscript:lint": "typoscript-lint",
-		"typoscript:lint:check": "typoscript-lint --fail-on-warnings",
-		"xml:lint": "find . -name '*.xlf' ! -path './vendor/*' ! -path './var/*' ! -path './.test/*'  ! -path './public/*' | xargs -r xmllint --schema vendor/symfony/translation/Resources/schemas/xliff-core-1.2-transitional.xsd --noout",
-		"xml:lint:check": "find ./ -name '*.xlf' ! -path './vendor/*' ! -path './var/*' ! -path './.test/*'  ! -path './public/*' | xargs -r xmllint --schema vendor/symfony/translation/Resources/schemas/xliff-core-1.2-transitional.xsd --noout",
-		"yaml:lint": "find ./ ! -path './vendor/*' ! -path '*/node_modules/*' ! -path './.test/*'  ! -path './public/*' \\( -name '*.yaml' -o -name '*.yml' \\) | xargs -r yaml-lint",
-		"yaml:lint:check": "find ./ ! -path './vendor/*' ! -path '*/node_modules/*' ! -path './.test/*'  ! -path './public/*' \\( -name '*.yaml' -o -name '*.yml' \\) | xargs -r yaml-lint"
+		"fix:composer": "@composer normalize",
+		"fix:editorconfig": "@lint:editorconfig --fix",
+		"fix:php": "php vendor/bin/php-cs-fixer --config=php-cs-fixer.php fix",
+		"lint": [
+			"@lint:composer",
+			"@lint:editorconfig",
+			"@lint:php",
+			"@lint:typoscript",
+			"@lint:yaml"
+		],
+		"lint:composer": "@fix:composer --dry-run",
+		"lint:editorconfig": "ec --git-only",
+		"lint:php": "@fix:php --dry-run",
+		"lint:typoscript": "typoscript-lint --fail-on-warnings",
+		"lint:yaml": "find ./ ! -path './vendor/*' ! -path '*/node_modules/*' ! -path './.Build/*' ! -path './xima_typo3_content_planner/*' \\( -name '*.yaml' -o -name '*.yml' \\) | xargs -r yaml-lint",
+		"migration": [
+			"@migration:rector"
+		],
+		"migration:rector": "rector process -c rector.php",
+		"sca": [
+			"@sca:php"
+		],
+		"sca:php": "phpstan analyse --memory-limit=2G"
 	}
 }
