@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace Xima\XimaTypo3RecentUpdates\ViewHelpers;
 
+use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use Xima\XimaTypo3RecentUpdates\Configuration;
@@ -39,11 +40,12 @@ use Xima\XimaTypo3RecentUpdates\Configuration;
 class TimeAgoViewHelper extends AbstractViewHelper
 {
     protected $escapeOutput = false;
+    public function __construct(private readonly \TYPO3\CMS\Core\Context\Context $context) {}
 
     public function initializeArguments(): void
     {
         $this->registerArgument('timestamp', 'int', 'Unix timestamp to format', true);
-        $this->registerArgument('currentTimestamp', 'int', 'Current timestamp for comparison (default: now)', false, time());
+        $this->registerArgument('currentTimestamp', 'int', 'Current timestamp for comparison (default: now)', false, null);
         $this->registerArgument('renderClass', 'string', 'Adds this class to the rendered <span> element', false, 'badge badge-secondary');
     }
 
@@ -51,17 +53,15 @@ class TimeAgoViewHelper extends AbstractViewHelper
     {
         $arguments = $this->arguments;
         $timestamp = (int)$arguments['timestamp'];
-        $currentTimestamp = (int)$arguments['currentTimestamp'];
-        $renderClass = $arguments['renderClass'];
+        $currentTimestamp = (int)($arguments['currentTimestamp'] ?? $this->getCurrentTimestamp());
+        $renderClass = $arguments['renderClass'] ?? 'badge badge-secondary';
 
         if ($timestamp <= 0) {
             return '';
         }
 
         $difference = $currentTimestamp - $timestamp;
-        $absoluteTimestamp = new \DateTimeImmutable('@' . $timestamp);
-        $formattedDate = $absoluteTimestamp->format('Y-m-d H:i:s');
-
+        $formattedDate = $this->formatDateWithTypo3Settings($timestamp);
         $relativeTime = $this->formatRelativeTime($difference);
 
         return sprintf(
@@ -113,12 +113,12 @@ class TimeAgoViewHelper extends AbstractViewHelper
         return $this->translatePluralLabel('timeago.years', $years);
     }
 
-    private function translateLabel(string $key): string
+    protected function translateLabel(string $key): string
     {
         return LocalizationUtility::translate($key, Configuration::EXT_NAME) ?? $key;
     }
 
-    private function translatePluralLabel(string $baseKey, int $count): string
+    protected function translatePluralLabel(string $baseKey, int $count): string
     {
         $singularKey = $baseKey . '.singular';
         $pluralKey = $baseKey . '.plural';
@@ -128,5 +128,43 @@ class TimeAgoViewHelper extends AbstractViewHelper
             : LocalizationUtility::translate($pluralKey, Configuration::EXT_NAME);
 
         return sprintf($template ?? '', $count);
+    }
+
+    /**
+     * Get current timestamp using TYPO3's Context API for timezone awareness
+     */
+    private function getCurrentTimestamp(): int
+    {
+        try {
+            $context = $this->context;
+            return $context->getPropertyFromAspect('date', 'timestamp');
+        } catch (\Exception $e) {
+            // Fallback to regular time() if Context is not available
+            return time();
+        }
+    }
+
+    /**
+     * Format date using TYPO3's system date format configuration
+     */
+    private function formatDateWithTypo3Settings(int $timestamp): string
+    {
+        // Get TYPO3 system date format from global configuration
+        $dateFormat = $GLOBALS['TYPO3_CONF_VARS']['SYS']['ddmmyy'] ?? 'd-m-Y';
+        $timeFormat = $GLOBALS['TYPO3_CONF_VARS']['SYS']['hhmm'] ?? 'H:i';
+        $fullFormat = $dateFormat . ' ' . $timeFormat;
+
+        // Create DateTime object with proper timezone handling
+        $dateTime = new \DateTimeImmutable('@' . $timestamp);
+
+        // Apply server timezone for display (TYPO3 backend typically uses server timezone)
+        try {
+            $serverTimezone = new \DateTimeZone(date_default_timezone_get());
+            $dateTime = $dateTime->setTimezone($serverTimezone);
+        } catch (\Exception $e) {
+            // Continue with UTC if timezone setting fails
+        }
+
+        return $dateTime->format($fullFormat);
     }
 }
