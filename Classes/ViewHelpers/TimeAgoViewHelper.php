@@ -41,7 +41,7 @@ class TimeAgoViewHelper extends AbstractViewHelper
 {
     protected $escapeOutput = false;
 
-    public function __construct(private readonly \TYPO3\CMS\Core\Context\Context $context) {}
+    public function __construct(private readonly Context $context) {}
 
     public function initializeArguments(): void
     {
@@ -138,8 +138,7 @@ class TimeAgoViewHelper extends AbstractViewHelper
     private function getCurrentTimestamp(): int
     {
         try {
-            $context = $this->context;
-            return $context->getPropertyFromAspect('date', 'timestamp');
+            return $this->context->getPropertyFromAspect('date', 'timestamp');
         } catch (\Exception $e) {
             // Fallback to regular time() if Context is not available
             return time();
