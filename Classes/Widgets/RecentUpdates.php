@@ -26,13 +26,15 @@ namespace Xima\XimaTypo3RecentUpdates\Widgets;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Dashboard\Widgets\AdditionalCssInterface;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
+use Xima\XimaTypo3RecentUpdates\Configuration;
 use Xima\XimaTypo3RecentUpdates\Utility\ViewFactoryHelper;
 
-class RecentUpdates implements WidgetInterface
+class RecentUpdates implements WidgetInterface, AdditionalCssInterface
 {
     protected ServerRequestInterface $request;
 
@@ -55,6 +57,14 @@ class RecentUpdates implements WidgetInterface
                 'version' => GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion(),
             ]
         );
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getCssFiles(): array
+    {
+        return ['EXT:' . Configuration::EXT_KEY . '/Resources/Public/Css/Styles.css'];
     }
 
     public function getOptions(): array
