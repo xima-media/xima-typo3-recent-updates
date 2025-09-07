@@ -25,6 +25,12 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Xima\XimaTypo3RecentUpdates\Utility\RecordUtility;
 
+/**
+ * ListItem.
+ *
+ * @author Konrad Michalik <hej@konradmichalik.dev>
+ * @license GPL-2.0
+ */
 final class ListItem
 {
     public array $log = [];

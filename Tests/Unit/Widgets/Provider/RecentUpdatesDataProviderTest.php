@@ -27,6 +27,12 @@ use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use Xima\XimaTypo3RecentUpdates\Widgets\Provider\RecentUpdatesDataProvider;
 
+/**
+ * RecentUpdatesDataProviderTest.
+ *
+ * @author Konrad Michalik <hej@konradmichalik.dev>
+ * @license GPL-2.0
+ */
 class RecentUpdatesDataProviderTest extends TestCase
 {
     public function testDataProviderImplementsInterface(): void

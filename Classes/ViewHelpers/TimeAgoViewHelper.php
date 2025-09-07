@@ -29,13 +29,10 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use Xima\XimaTypo3RecentUpdates\Configuration;
 
 /**
- * ViewHelper for displaying relative time differences in human-readable format
+ * TimeAgoViewHelper.
  *
- * Usage:
- * <xru:timeAgo timestamp="{item.updated}" />
- *
- * Output:
- * <span title="2025-01-27 10:30:00">5 minutes ago</span>
+ * @author Konrad Michalik <hej@konradmichalik.dev>
+ * @license GPL-2.0
  */
 class TimeAgoViewHelper extends AbstractViewHelper
 {

@@ -26,6 +26,12 @@ namespace Xima\XimaTypo3RecentUpdates\Tests\Unit\ViewHelpers;
 use PHPUnit\Framework\TestCase;
 use Xima\XimaTypo3RecentUpdates\ViewHelpers\TimeAgoViewHelper;
 
+/**
+ * TimeAgoViewHelperTest.
+ *
+ * @author Konrad Michalik <hej@konradmichalik.dev>
+ * @license GPL-2.0
+ */
 class TimeAgoViewHelperTest extends TestCase
 {
     private TestableTimeAgoViewHelper $viewHelper;
@@ -244,7 +250,10 @@ class TimeAgoViewHelperTest extends TestCase
 }
 
 /**
- * Testable version of TimeAgoViewHelper that doesn't depend on TYPO3's localization system
+ * TestableTimeAgoViewHelper.
+ *
+ * @author Konrad Michalik <hej@konradmichalik.dev>
+ * @license GPL-2.0
  */
 class TestableTimeAgoViewHelper extends TimeAgoViewHelper
 {
