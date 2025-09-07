@@ -1,9 +1,9 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
-    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
-    xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
-    xmlns:xru="http://typo3.org/ns/Xima/XimaTypo3RecentUpdates/ViewHelpers"
-    data-namespace-typo3-fluid="true">
+      xmlns:backend="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+      xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+      xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+      xmlns:xru="http://typo3.org/ns/Xima/XimaTypo3RecentUpdates/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 
 <tr>
     <td>
@@ -14,7 +14,8 @@
                                     title="{item.details}"
                                     returnUrl="{be:moduleLink(route: 'dashboard')}">
                     <core:iconForRecord table="{item.log.tablename}" row="{item.log}"/>
-                    <strong>{f:if(condition: item.title, then: '{item.title -> f:format.raw()}', else: '[{f:translate(key:
+                    <strong>{f:if(condition: item.title, then: '{item.title -> f:format.raw()}', else:
+                        '[{f:translate(key:
                         \'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.no_title\')}]')}</strong>
                 </be:link.editRecord>
             </f:then>
@@ -28,8 +29,8 @@
     <td>
         <f:if condition="{item.log.pageTitle} && {item.log.pageId}">
             <a href="{be:moduleLink(route: 'web_layout', arguments: '{id: item.log.pageId}')}"
-            target="_blank"
-            title="">
+               target="_blank"
+               title="">
                 <core:iconForRecord table="pages" row="{item.log}"/>
                 {item.log.pageTitle}
             </a>
@@ -39,12 +40,14 @@
         <core:iconForRecord table="{item.log.tablename}" row="{item.log}"/>
         {item.type}
     </td>
-    <td>
-        <xru:timeAgo timestamp="{item.log.updated}" />
+    <td class="font-size-80">
+        <xru:timeAgo timestamp="{item.log.updated}"/>
     </td>
-    <td class="x--recent-updates-widget--user" style="display: flex;gap: 10px;">
-        <backend:avatar backendUser="{item.log.userId}" size="20"/>
-        {item.log.username}
+    <td>
+        <div class="d-flex gap-2">
+            <backend:avatar backendUser="{item.log.userId}" size="20"/>
+            {item.log.username}
+        </div>
     </td>
 </tr>
 
