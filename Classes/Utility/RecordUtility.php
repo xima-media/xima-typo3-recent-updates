@@ -25,6 +25,14 @@ namespace Xima\XimaTypo3RecentUpdates\Utility;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 
+
+/**
+ * RecordUtility.
+ *
+ * @author Konrad Michalik <hej@konradmichalik.dev>
+ * @license GPL-2.0
+ */
+
 class RecordUtility
 {
     public static function getRecordTitle(?string $table = null, ?int $uid = null): ?string

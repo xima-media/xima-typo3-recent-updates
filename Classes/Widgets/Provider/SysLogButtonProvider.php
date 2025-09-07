@@ -28,10 +28,11 @@ use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ElementAttributesInterface;
 
 /**
-* Provide link for sys log button.
-* Check whether belog is enabled and add link to module.
-* No link is returned if not enabled.
-*/
+ * SysLogButtonProvider.
+ *
+ * @author Konrad Michalik <hej@konradmichalik.dev>
+ * @license GPL-2.0
+ */
 class SysLogButtonProvider implements ButtonProviderInterface, ElementAttributesInterface
 {
     public function __construct(private readonly string $title, private readonly string $target = '') {}

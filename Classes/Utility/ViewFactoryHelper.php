@@ -29,6 +29,14 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;
 use Xima\XimaTypo3RecentUpdates\Configuration;
 
+
+/**
+ * ViewFactoryHelper.
+ *
+ * @author Konrad Michalik <hej@konradmichalik.dev>
+ * @license GPL-2.0
+ */
+
 class ViewFactoryHelper
 {
     /**

@@ -32,6 +32,14 @@ use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
 use Xima\XimaTypo3RecentUpdates\Utility\ViewFactoryHelper;
 
+
+/**
+ * RecentUpdates.
+ *
+ * @author Konrad Michalik <hej@konradmichalik.dev>
+ * @license GPL-2.0
+ */
+
 class RecentUpdates implements WidgetInterface
 {
     protected ServerRequestInterface $request;

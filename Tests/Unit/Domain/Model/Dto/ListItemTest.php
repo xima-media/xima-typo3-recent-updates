@@ -26,6 +26,14 @@ namespace Xima\XimaTypo3RecentUpdates\Tests\Unit\Domain\Model\Dto;
 use PHPUnit\Framework\TestCase;
 use Xima\XimaTypo3RecentUpdates\Domain\Model\Dto\ListItem;
 
+
+/**
+ * ListItemTest.
+ *
+ * @author Konrad Michalik <hej@konradmichalik.dev>
+ * @license GPL-2.0
+ */
+
 class ListItemTest extends TestCase
 {
     public function testCreateFromV12LogWithValidData(): void

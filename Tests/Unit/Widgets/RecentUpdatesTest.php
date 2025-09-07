@@ -29,6 +29,14 @@ use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use Xima\XimaTypo3RecentUpdates\Widgets\RecentUpdates;
 
+
+/**
+ * RecentUpdatesTest.
+ *
+ * @author Konrad Michalik <hej@konradmichalik.dev>
+ * @license GPL-2.0
+ */
+
 class RecentUpdatesTest extends TestCase
 {
     private WidgetConfigurationInterface $configuration;
