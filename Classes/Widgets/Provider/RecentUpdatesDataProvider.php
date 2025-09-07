@@ -29,14 +29,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
 use Xima\XimaTypo3RecentUpdates\Domain\Model\Dto\ListItem;
 
-
 /**
  * RecentUpdatesDataProvider.
  *
  * @author Konrad Michalik <hej@konradmichalik.dev>
  * @license GPL-2.0
  */
-
 class RecentUpdatesDataProvider implements ListDataProviderInterface
 {
     public function __construct(private readonly ConnectionPool $connectionPool) {}

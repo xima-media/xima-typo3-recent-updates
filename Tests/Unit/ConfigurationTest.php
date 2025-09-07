@@ -26,14 +26,12 @@ namespace Xima\XimaTypo3RecentUpdates\Tests\Unit;
 use PHPUnit\Framework\TestCase;
 use Xima\XimaTypo3RecentUpdates\Configuration;
 
-
 /**
  * ConfigurationTest.
  *
  * @author Konrad Michalik <hej@konradmichalik.dev>
  * @license GPL-2.0
  */
-
 class ConfigurationTest extends TestCase
 {
     public function testExtKeyConstant(): void
