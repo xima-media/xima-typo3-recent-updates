@@ -1,5 +1,5 @@
 name: typo3-multi-version-extension
-repository: jackd248/ddev-typo3-multi-version-extension
+repository: konradmichalik/ddev-typo3-multi-version-extension
 version: 0.1.0
 install_date: "2025-08-08T11:20:26+02:00"
 project_files:
