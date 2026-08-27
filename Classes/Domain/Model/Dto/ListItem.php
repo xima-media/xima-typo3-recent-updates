@@ -39,7 +39,7 @@ final class ListItem
     {
         $item = new ListItem();
         $item->log = $sysLogRow;
-        $logData = unserialize($item->log['log_data']);
+        $logData = unserialize($item->log['log_data'], ['allowed_classes' => false]);
         $item->log['log_data'] = is_array($logData) ? $logData : [];
         $item->log['title'] = $item->log['log_data'][0] ?? RecordUtility::getRecordTitle($item->log['log_data']['table'] ?? null, $item->log['log_data']['uid'] ?? null);
         return $item;
