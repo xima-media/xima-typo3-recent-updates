@@ -3,7 +3,7 @@
 /*
  * This file is part of the TYPO3 CMS extension "xima_typo3_recent_updates".
  *
- * Copyright (C) 2023-2025 Konrad Michalik <hej@konradmichalik.dev>
+ * Copyright (C) 2023-2026 Konrad Michalik <hej@konradmichalik.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
