@@ -39,8 +39,9 @@ final class ListItem
     {
         $item = new ListItem();
         $item->log = $sysLogRow;
-        $item->log['log_data'] = unserialize($item->log['log_data']);
-        $item->log['title'] = $item->log['log_data'][0] ?? RecordUtility::getRecordTitle($item->log['log_data']['table'], $item->log['log_data']['uid']);
+        $logData = unserialize($item->log['log_data']);
+        $item->log['log_data'] = is_array($logData) ? $logData : [];
+        $item->log['title'] = $item->log['log_data'][0] ?? RecordUtility::getRecordTitle($item->log['log_data']['table'] ?? null, $item->log['log_data']['uid'] ?? null);
         return $item;
     }
 
@@ -48,8 +49,9 @@ final class ListItem
     {
         $item = new ListItem();
         $item->log = $sysLogRow;
-        $item->log['log_data'] = json_decode($item->log['log_data'], true);
-        $item->log['title'] = $item->log['log_data']['title'] ?? RecordUtility::getRecordTitle($item->log['log_data']['table'], $item->log['log_data']['uid']);
+        $logData = json_decode($item->log['log_data'], true);
+        $item->log['log_data'] = is_array($logData) ? $logData : [];
+        $item->log['title'] = $item->log['log_data']['title'] ?? RecordUtility::getRecordTitle($item->log['log_data']['table'] ?? null, $item->log['log_data']['uid'] ?? null);
         return $item;
     }
 
