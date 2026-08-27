@@ -118,6 +118,22 @@ class ListItemTest extends TestCase
         self::assertSame([], ListItem::createFromV11Log(['log_data' => serialize(false)] + $logData)->log['log_data']);
     }
 
+    public function testCreateFromV11LogWithMalformedSerializedDataDoesNotEmitDiagnostic(): void
+    {
+        $logData = [
+            'uid' => 1,
+            'updated' => 1234567890,
+            'tablename' => 'tt_content',
+            'details' => 'Test details',
+            'log_data' => 'a:2:{s:5:"table";s:10:"tt_content";',
+            'cType' => 'text',
+        ];
+
+        $listItem = ListItem::createFromV11Log($logData);
+
+        self::assertSame([], $listItem->log['log_data']);
+    }
+
     public function testTruncate(): void
     {
         $shortString = 'Short text';
