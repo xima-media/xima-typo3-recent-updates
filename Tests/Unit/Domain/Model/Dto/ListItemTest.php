@@ -72,6 +72,68 @@ class ListItemTest extends TestCase
         self::assertIsArray($listItem->log['log_data']);
     }
 
+    public function testCreateFromV12LogWithoutTitleAndRecordReference(): void
+    {
+        $logData = [
+            'uid' => 1,
+            'updated' => 1234567890,
+            'tablename' => 'tt_content',
+            'details' => 'Test details',
+            'log_data' => '{"history":"12"}',
+            'cType' => 'text',
+        ];
+
+        $listItem = ListItem::createFromV12Log($logData);
+
+        self::assertSame('', $listItem->log['title']);
+    }
+
+    public function testCreateFromV11LogWithoutTitleAndRecordReference(): void
+    {
+        $logData = [
+            'uid' => 1,
+            'updated' => 1234567890,
+            'tablename' => 'tt_content',
+            'details' => 'Test details',
+            'log_data' => serialize(['history' => '12']),
+            'cType' => 'text',
+        ];
+
+        $listItem = ListItem::createFromV11Log($logData);
+
+        self::assertSame('', $listItem->log['title']);
+    }
+
+    public function testCreateFromLogWithNonArrayLogData(): void
+    {
+        $logData = [
+            'uid' => 1,
+            'updated' => 1234567890,
+            'tablename' => 'tt_content',
+            'details' => 'Test details',
+            'cType' => 'text',
+        ];
+
+        self::assertSame([], ListItem::createFromV12Log(['log_data' => 'not json'] + $logData)->log['log_data']);
+        self::assertSame([], ListItem::createFromV11Log(['log_data' => serialize(false)] + $logData)->log['log_data']);
+    }
+
+    public function testCreateFromV11LogWithMalformedSerializedDataDoesNotEmitDiagnostic(): void
+    {
+        $logData = [
+            'uid' => 1,
+            'updated' => 1234567890,
+            'tablename' => 'tt_content',
+            'details' => 'Test details',
+            'log_data' => 'a:2:{s:5:"table";s:10:"tt_content";',
+            'cType' => 'text',
+        ];
+
+        $listItem = ListItem::createFromV11Log($logData);
+
+        self::assertSame([], $listItem->log['log_data']);
+    }
+
     public function testTruncate(): void
     {
         $shortString = 'Short text';
